@@ -26,17 +26,19 @@ const reducer = (state = initialState, action) => {
   if(action.type === 'VOTE') {
     const id = action.id
     const anecdote = state.find(a => a.id === id)
+
     const votedAnecdote = {
       ...anecdote,
       votes: anecdote.votes + 1
     }
+
     return state.map(anecdote =>
       anecdote.id !== id ? anecdote : votedAnecdote
-    )
+    ).sort((a, b) => b.votes - a.votes)
   }
 
   if(action.type === 'CREATE') {
-    return [...state, asObject(action.content)]
+    return [...state, asObject(action.content)].sort((a, b) => b.votes - a.votes)
   }
 
   return state
