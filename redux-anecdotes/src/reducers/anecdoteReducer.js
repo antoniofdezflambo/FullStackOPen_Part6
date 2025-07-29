@@ -35,6 +35,10 @@ const reducer = (state = initialState, action) => {
     )
   }
 
+  if(action.type === 'CREATE') {
+    return [...state, asObject(action.content)]
+  }
+
   return state
 }
 
