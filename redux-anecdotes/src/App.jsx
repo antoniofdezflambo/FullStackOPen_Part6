@@ -8,13 +8,13 @@ import Notification from './components/Notification'
 
 import { setAnecdotes } from './reducers/anecdoteReducer'
 
-import noteService from './services/anecdotes'
+import anecdoteService from './services/anecdotes'
 
 const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    noteService.getAll().then(anecdotes => dispatch(setAnecdotes(anecdotes)))
+    anecdoteService.getAll().then(anecdotes => dispatch(setAnecdotes(anecdotes)))
   }, [])
 
   return (
