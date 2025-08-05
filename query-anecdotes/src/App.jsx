@@ -3,13 +3,17 @@ import { useQuery } from '@tanstack/react-query'
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 
-import { getNotes } from './requests/requests'
+import { getAnecdotes, createAnecdote } from './requests/requests'
 
 const App = () => {
 
+  const handleVote = (anecdote) => {
+    console.log('vote')
+  }
+
   const result = useQuery({
     queryKey: ['anecdotes'],
-    queryFn: getNotes,
+    queryFn: getAnecdotes,
     retry: 1
   })
 
@@ -22,10 +26,6 @@ const App = () => {
   }
 
   const anecdotes = result.data
-
-  const handleVote = (anecdote) => {
-    console.log('vote')
-  }
 
   return (
     <div>
