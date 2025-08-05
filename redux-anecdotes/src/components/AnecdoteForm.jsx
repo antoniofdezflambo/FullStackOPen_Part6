@@ -14,7 +14,7 @@ const AnecdoteForm = () => {
 
     dispatch(createAnecdote(content))
 
-    dispatch(setNotification(`Anecdote '${content}' has been created`, 5000))
+    dispatch(setNotification(`Anecdote '${content}' has been created`))
   }
 
   return (
