@@ -1,3 +1,5 @@
+import { useNotification } from '../NotificationContext'
+
 const Notification = () => {
   const style = {
     border: 'solid',
@@ -6,12 +8,13 @@ const Notification = () => {
     marginBottom: 5
   }
   
-  const condition = true
-  if (condition) return null
+  const message = useNotification()
+
+  if (!message || message === '') return null
 
   return (
     <div style={style}>
-      
+      {message}
     </div>
   )
 }
